@@ -34,7 +34,7 @@ const fontLoader = new FontLoader()
 
 let text: THREE.Mesh;
 fontLoader.load(
-    '/RBpart-heading_Regular.json',
+    '/font.json',
     (font) =>
     {
         const textGeometry = new TextGeometry(
