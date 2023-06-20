@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- <link rel="stylesheet" href="/src/style.css" /> -->
+	<title>Donut Boy</title>
+</head>
+
+<body>
+	<canvas id="game"></canvas>
+	<img src="./logo.png" alt="Donut Boy" class="w-64 absolute left-10 top-10">
+	<h2 class="absolute right-10 top-10 font-black text-3xl" id="score">0 / 0</h2>
+
+	<div class="absolute w-full h-screen grid place-content-center">
+		<div id="instructions">
+			<p class="text-xl font-lg">Press spacebar to play.</p>
+		</div>
+		<div id="gameover" class="p-12 hidden">
+			<h2 class="text-5xl font-bold">Game Over</h2>
+			<p class="text-xl font-lg">Please refresh the page to play again.</p>
+		</div>
+	</div>
+	<script type="module" src="/src/main.ts"></script>
+	<!-- <script type="module" src="/src/test.ts"></script> -->
+</body>
+
+</html>
