@@ -6,17 +6,23 @@
 	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- <link rel="stylesheet" href="/src/style.css" /> -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 	<title>Donut Boy</title>
 </head>
 
 <body>
 	<canvas id="game"></canvas>
 	<img src="./logo.png" alt="Donut Boy" class="w-64 absolute left-10 top-10">
-	<h2 class="absolute right-10 top-10 font-black text-3xl" id="score">0 / 0</h2>
+	<h2 class="absolute right-10 top-10 font-black text-lg md:text-3xl" id="score">0 / 0</h2>
 
 	<div class="absolute w-full h-screen grid place-content-center">
 		<div id="instructions">
-			<p class="text-xl font-lg">Press spacebar to play.</p>
+			<p class="text-xl">Press spacebar to play. </p>
+			<p class="text-xl">Move mouse to move box. </p>
+			<p class="text-md">Game only available for desktop</p>
 		</div>
 		<div id="gameover" class="p-12 hidden">
 			<h2 class="text-5xl font-bold">Game Over</h2>
