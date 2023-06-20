@@ -19,6 +19,16 @@ let score = 0;
  */
 const instructionsDiv = document.getElementById("instructions")!;
 const gameoverDiv = document.getElementById("gameover")!;
+
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader();
+const donutTexture = textureLoader.load("/donut.jpg");
+
+// donutTexture.wrapS = THREE.RepeatWrapping;
+// donutTexture.wrapT = THREE.RepeatWrapping;
+
 /**
  * Debugger GUI
  */
@@ -46,7 +56,10 @@ background.position.z = -5;
 
 // Donut
 const donutGeometry = new THREE.TorusGeometry(8, 3, 16, 100);
-const donutMaterial = new THREE.MeshStandardMaterial({ color: 0xff6347 });
+const donutMaterial = new THREE.MeshStandardMaterial({
+	// color: 0xff6347,
+	map: donutTexture,
+});
 const donut = new THREE.Mesh(donutGeometry, donutMaterial);
 donut.position.y = 125;
 
@@ -68,10 +81,10 @@ scene.add(background, donut, box);
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight("#b9d5ff", 0.75);
+const ambientLight = new THREE.AmbientLight("#b9d5ff", 0.65);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.35);
 directionalLight.position.set(-50, -75, 125);
 directionalLight.castShadow = true;
 directionalLight.shadow.mapSize.width = 2024;
@@ -84,7 +97,7 @@ directionalLight.shadow.camera.top = 256;
 directionalLight.shadow.camera.bottom = -256;
 scene.add(directionalLight);
 
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.75);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.45);
 directionalLight2.position.set(50, 75, 125);
 directionalLight2.castShadow = true;
 directionalLight2.shadow.mapSize.width = 2024;
