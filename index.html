@@ -16,17 +16,28 @@
 <body>
 	<canvas id="game"></canvas>
 	<img src="./logo.png" alt="Donut Boy" class="w-64 absolute left-10 top-10">
-	<h2 class="absolute right-10 top-10 font-black text-lg md:text-3xl" id="score">0 / 0</h2>
+	<h2 class="absolute right-10 top-10 font-black text-lg md:text-6xl text-pink-600" id="score">0 / 0</h2>
 
 	<div class="absolute w-full h-screen grid place-content-center">
-		<div id="instructions">
-			<p class="text-xl">Press spacebar to play. </p>
-			<p class="text-xl">Move mouse to move box. </p>
-			<p class="text-md" id="play">Game only available for desktop</p>
+		<div id="instructions" class="w-full text-pink-600">
+			<!-- <p class="text-xl">Press spacebar to play. </p> -->
+			<!-- <p class="text-xl">Move mouse to move box. </p> -->
+			<!-- <p class="text-md" id="play">Game only available for desktop</p> -->
+			<p class="text-6xl font-bold mb-8 text-center">How To Play</p>
+			<ul class="list-disc ml-8">
+				<li class="text-xl">Drag the pink box underneath the donut to pack it.</li>
+				<li class="text-xl">Packing one scores 1 point.</li>
+				<li class="text-xl mb-12">You lose if you miss 3 donuts.</li>
+			</ul>
+			<div class="p-4 bg-pink-400/80 text-white rounded-full text-center text-3xl font-bold" id="play">Play</div>
+
 		</div>
 		<div id="gameover" class="p-12 hidden">
-			<h2 class="text-5xl font-bold">Game Over</h2>
-			<p class="text-xl font-lg" id="restart">Please refresh the page to play again.</p>
+			<p class="text-6xl font-bold mb-8 text-center">Game Over</p>
+			<div class="p-4 bg-pink-400/80 text-white rounded-full text-center text-3xl font-bold" id="restart">Play
+				Again</div>
+
+
 		</div>
 	</div>
 	<script type="module" src="/src/main.ts"></script>

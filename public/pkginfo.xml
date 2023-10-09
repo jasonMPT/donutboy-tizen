@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkg name="DonutBoy" type="Kiosk">
+  <packagever>2023092501</packagever>
+  <app>
+    <apptype>order_web</apptype>
+    <Existence>1</Existence>
+    <appfile>DonutBoy.wgt</appfile>
+    <version>ord20230925_01</version>
+  </app>
+</pkg>
