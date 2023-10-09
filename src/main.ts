@@ -3,6 +3,11 @@ import * as THREE from "three";
 // import * as dat from "lil-gui";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
+const playGame = () => {
+	isPlaying = true;
+	instructionsDiv.classList.add("hidden");
+	animate();
+}
 const sizes = {
 	width: window.innerWidth,
 	height: window.innerHeight,
@@ -24,7 +29,7 @@ const gameoverDiv = document.getElementById("gameover")!;
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const donutTexture = textureLoader.load("/donut.jpg");
+const donutTexture = textureLoader.load("./donut.jpg");
 
 // donutTexture.wrapS = THREE.RepeatWrapping;
 // donutTexture.wrapT = THREE.RepeatWrapping;
@@ -158,6 +163,40 @@ window.addEventListener("mousemove", (event) => {
 	cursor.y = -(event.clientY / sizes.height - 0.5);
 });
 
+let isDragging = false;
+let previousMousePosition = {
+	x: 0,
+	y: 0
+};
+box.position.x = previousMousePosition.x;
+
+window.addEventListener("mousedown", (event) => {
+	isDragging = true;
+	previousMousePosition = {
+		x: event.clientX / sizes.width - 0.5,
+		y: -(event.clientY / sizes.height - 0.5)
+	};
+});
+
+window.addEventListener("mousemove", (event) => {
+	if (isDragging) {
+		// const deltaX = event.clientX - previousMousePosition.x;
+		// const deltaY = event.clientY - previousMousePosition.y;
+
+		// // Do something with deltaX and deltaY, such as rotating the camera
+		// // or moving an object
+		console.log(event.clientX);
+		previousMousePosition = {
+			x: event.clientX / sizes.width - 0.5,
+			y: -(event.clientY / sizes.height - 0.5)
+		};
+	}
+});
+
+window.addEventListener("mouseup", () => {
+	isDragging = false;
+});
+
 /**
  * Renderer
  */
@@ -192,19 +231,32 @@ let previousTime = 0;
 
 window.addEventListener("keydown", (e) => {
 	if (e.code === "Space" && !isPlaying) {
-		isPlaying = true;
-		instructionsDiv.classList.add("hidden");
-		animate();
+		playGame()
 	}
 });
+document.getElementById("play")!.addEventListener("click", () => {
+	playGame();
+});
+
+//restart game
+document.getElementById("restart")!.addEventListener("click", () => {
+	gameOver = false;
+	score = 0;
+	totalDonuts = 0;
+	rate = 1;
+	previousTime = 0;
+	clock.start();
+	gameoverDiv.classList.add("hidden");
+	playGame();
+});
 const animate = () => {
-	console.log(rate);
+	// console.log(rate);
 	if (gameOver) {
 		console.log("game over", totalDonuts, score);
 		gameoverDiv.classList.remove("hidden");
 		return;
 	}
-
+	
 	const elapsedTime = clock.getElapsedTime();
 	const deltaTime = elapsedTime - previousTime;
 	previousTime = elapsedTime;
@@ -215,7 +267,8 @@ const animate = () => {
 	// controls.update();
 
 	// Update objects
-	box.position.x = (cursor.x * sizes.width) / 4;
+	console.log(cursor.x, previousMousePosition.x)
+	box.position.x = (previousMousePosition.x * sizes.width) / 4;
 	// console.log(donut.position.y);
 	// if (donut.position.y > -100 && donut.position.y < -99)
 	// 	console.log(box.position.x, donut.position.x);
